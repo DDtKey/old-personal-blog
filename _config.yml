@@ -15,6 +15,12 @@ urls:
     - text: About
       url: /about
 
+# i8n
+languages: ["en", "ru"]
+default_lang: "en"
+exclude_from_localization: ["javascript", "images", "css", "public"]
+parallel_localization: true
+
 # Edit Author details (For multi authors check _data/authors.yml)
 
 author_logo: profile.png
@@ -173,6 +179,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-menus
   - jekyll-admin
+  - jekyll-polyglot
 
 # Jekyll Admin Config
 jekyll_admin:
@@ -192,6 +199,10 @@ jekyll_admin:
 #
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
+
+# fix polyglot for jekyll 4+
+sass:
+  sourcemap: never
 
 exclude:
   - .sass-cache/
