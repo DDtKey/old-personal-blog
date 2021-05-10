@@ -30,7 +30,7 @@ layout: default
 
         <ul>
           {% for post in site.posts limit:5 %}
-          <li class="article-card">
+          <li class="article-card i18n-container i18n-lang__{{post.lang}}">
             <a href="{{post.url}}" class="article-card-link">
               <div id="article-container">
                 <div id="article-img">

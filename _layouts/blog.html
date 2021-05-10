@@ -2,28 +2,27 @@
 layout: default
 ---
 <div class="col-lg-12">
- <div class="row justify-content-center">
+    <div class="row justify-content-center">
       <div class="col-lg-6">
               <ul>
                   <div class="row">
                       {% for post in paginator.posts %}
-                      <div class="card blog-post">
+                      <div class="card blog-post i18n-container i18n-lang__{{post.lang}}">
                           <img class="card-img-top" src="{{site.url}}{{site.baseurl}}{{ post.thumbnail }}" alt="{{ post.title }}">
                           <div class="card-body center">
                               <!-- <img src="{{site.url}}{{site.baseurl}}/assets/img/{{ site.author_logo }}" class="author-profile-img"> -->
                               <h4 class="card-title">{{ post.title }}</h4>
 
-                              <h6 class="card-subtitle mb-2 text-muted">{{ post.date | date: "%b %-d, %Y" }}</h6>
-                              <p class="card-text">{{ post.summary }} </p>
+                         <h6 class="card-subtitle mb-2 text-muted">{{ post.date | date: "%b %-d, %Y" }}</h6>
+                         <p class="card-text">{{ post.summary }} </p>
 
-                              <a href="{{ post.url | prepend: site.baseurl }}" data-disqus-identifier="{{ post.url }}" class="btn btn-dark btn-lg">Read</a>
-                              <span class="disqus-comment-count" data-disqus-identifier="{{ post.url }}"></span>
-
-                          </div>
-                      </div>
-                      {% endfor %}
-                  </div>
-              </ul>
+                         <a href="{{ post.url | prepend: site.baseurl }}" data-disqus-identifier="{{ post.url }}" class="btn btn-dark btn-lg">Read</a>
+                         <span class="disqus-comment-count" data-disqus-identifier="{{ post.url }}"></span>
+                     </div>
+                 </div>
+                 {% endfor %}
+             </div>
+         </ul>
 
         <div class="row center">
           <!-- Pagination links -->

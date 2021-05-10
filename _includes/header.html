@@ -32,6 +32,17 @@
               </a>
             </li>
 
+            <li class="nav-item btn-group">
+
+                {% for lang in site.languages %}
+
+                  <div class="btn i18n-switch i18n-lang__{{ lang.code }}" onclick="setCurrentLang('{{ lang.code }}')">
+                    {{ lang.name }}
+                  </div>
+
+                {% endfor %}
+            </li>
+
             <li class="nav-item">
               <input
                 class="nav-link switch"

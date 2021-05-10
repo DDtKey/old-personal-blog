@@ -9,7 +9,7 @@ tags: authz, api security, authorization, access-control, rust
 thumbnail: /assets/img/posts/authz-rust-preview.png
 keywords: настройка авторизации, actix-web, casbin, контроль доступа
 usemathjax: false
-permalink: /blog/authz-mechanisms-in-Rust/
+permalink: /blog/authz-mechanisms-in-Rust/ru/
 lang: ru
 ---
 
