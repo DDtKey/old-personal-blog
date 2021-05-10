@@ -2,7 +2,7 @@
 layout: post
 title:  "Authorization mechanisms in Rust web applications"
 summary: ""
-author: ddtkey
+author: DDtKey
 date: '2021-05-10'
 category: ['rust', 'authz']
 tags: authz, api security, authorization, access-control, rust
