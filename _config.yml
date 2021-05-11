@@ -192,6 +192,11 @@ jekyll_admin:
   homepage: "posts"
 
 
+# fix polyglot for jekyll 4+
+sass:
+  sourcemap: never
+
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -199,10 +204,6 @@ jekyll_admin:
 #
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
-
-# fix polyglot for jekyll 4+
-sass:
-  sourcemap: never
 
 exclude:
   - .sass-cache/

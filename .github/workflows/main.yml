@@ -23,7 +23,7 @@ jobs:
       - uses: jeffreytse/jekyll-deploy-action@v0.2.1
         with:
           provider: 'github'
-          token: ${{ secrets.GITHUB_TOKEN }} # It's your Personal Access Token(PAT)
+          token: ${{ secrets.GH_PERSONAL_TOKEN }} # It's your Personal Access Token(PAT)
           branch: 'gh-pages'         # Default is gh-pages for github provider
           jekyll_src: './'           # Default is root directory
           jekyll_cfg: '_config.yml'  # Default is _config.yml
