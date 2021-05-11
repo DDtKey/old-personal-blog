@@ -1,0 +1,8 @@
+# Navigation
+urls:
+  - text: Главная
+    url: /
+  - text: Блог
+    url: /blog
+  - text: Обо мне
+    url: /about

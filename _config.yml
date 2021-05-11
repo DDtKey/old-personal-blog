@@ -6,95 +6,21 @@ description: >- # this means to ignore newlines until "baseurl:"
 url: "" # the base hostname & protocol for your site, e.g. https://example.github.io
 baseurl: "" # the subpath of your site, e.g. /blog
 
-# Navigation
-urls:
-    - text: Home
-      url: /
-    - text: Blog
-      url: /blog
-    - text: About
-      url: /about
-
 # i8n
 languages: ["en", "ru"]
 default_lang: "en"
 exclude_from_localization: ["javascript", "images", "css", "public"]
 parallel_localization: true
+language_names:
+  ru: Русский
+  en: English
 
-# Edit Author details (For multi authors check _data/authors.yml)
+# Choose what to show ( can be true or false)
+show_author_work_experiences: true
+show_author_education_details: true
+show_author_project_details: false
 
-author_logo: profile.png
-author: Artem Medvedev
-author_bio: >-
-  Hi, my name is Artem Medvedev. I'm a software developer (Rust, Java, Typescript). <br/>
-  I'm a big fan of software development, it's more than just a job for me. <br/>
-  I always strive for professional growth, gaining new knowledge and opportunities 🚀 <br/>
-author_email: "ddttkey@gmail.com"
-author_location: Russia
-author_website_url: "https://ddtkey.github.io"
-typewrite-text: Welcome to my personal website!
-
-# Experiences
-author_work_experiences:
-            - company_name: Luxoft
-              company_logo: luxoft.png
-              company_url: https://www.luxoft.com/
-              designation: Lead Software Engineer
-              description: Worked on various Luxoft projects
-              visibility: true
-            - company_name: Evotor
-              company_logo: evotor.png
-              company_url: https://evotor.ru/
-              designation: Senior Java Software Engineer
-              description: >-
-                Designed and developed horizontally scalable web services within the Evotor.PAY payment service.
-                Made integration with banking systems via API.
-
-                Used technologies: Spring (MVC, Data, Messaging, Websocket), AWS S3, Kafka, Oracle DB, Angular
-                and etc.
-              visibility: true
-            - company_name: Texuna Technologies
-              company_logo: texuna.png
-              company_url: https://texuna.com/
-              designation: Java Software Engineer
-              description: >-
-                Developed web services (in close collaboration with business analysts and QA engineers), which are
-                actively used in the UK education sector.
-                Worked in strict compliance with the Privacy Policy (шDPR).
-
-                Technologies used: Spring, AWS, Angular, d3js, Wicket, PostgreSQL, OLAP (MDX) and etc.
-              visibility: true
-            - company_name: Simplex-Sofware
-              company_logo: simplex-software.png
-              company_url: https://simplex-software.ru/
-              designation: Java Developer
-              description: >-
-                Developed projects in accordance with the terms of reference (server side, including the development
-                of blockchain solutions), using the following technologies: Spring Framework, Wicket, ZK Framework,
-                Hibernate, XPath, web3j.
-
-                Participated in discussions on application architecture.
-                Conducted code reviews, helped and lectured colleagues.
-              visibility: true
-
-# Education
-author_education_details:
-              - college_logo: mgou-logo.png
-                college_name: MSRU (Moscow State Regional University)
-                college_url: https://mgou.ru/
-                college_degree: Project Manager
-                description: Bachelor's degree
-                visibility: true
-
-# Projects
-#author_project_details:
-#              - project_thumbnail: gamershub.png
-#                project_title: Gamers Hub
-#                project_description: A Platform built for Gamers and Game Devs
-#                project_url: https://gamershub.in
-#                visibility: true
-
-# social links
+# Social links
 twitter_username: DDttKey
 github_username:  DDtKey
 facebook_username: 
@@ -124,11 +50,6 @@ formspree_email:
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
-
-# Choose what to show ( can be true or false)
-show_author_work_experiences: true
-show_author_education_details: true
-show_author_project_details: false
 
 # pagination of posts
 paginate: 4

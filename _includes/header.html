@@ -14,7 +14,7 @@
           <a class="navbar-brand" href="/">{{site.title}}</a>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              {% for i in site.urls %}
+              {% for i in site.data.navigation.urls %}
               <li class="nav-item">
                 <a
                   class="nav-link"
@@ -30,6 +30,17 @@
               <a class="nav-link toggle-search-button" href="#search">
                 <i class="fa fa-search search-icon" aria-hidden="true"></i>
               </a>
+            </li>
+
+            <li class="nav-item btn-group">
+                <!-- jekyll-polyglot will process ferh= into href= through the static_href liquid block tag without relativizing the url; useful for making language navigation switchers  -->
+                {% for lang in site.languages %}
+                <a class="btn btn-link btn-lang-switch {% if lang == site.active_lang %}btn-lang-switch__active disabled{% endif %}"
+                   {% if lang == site.default_lang %}onClick="javascript:redirectToDefaultBaseUrl()" href="#"{% else %}
+                    {% static_href %}href="{{site.baseurl}}/{{ lang }}{{page.url}}"{% endstatic_href %}{% endif %} >
+                  {{ site.language_names[lang] }}
+                </a>
+                {% endfor %}
             </li>
 
             <li class="nav-item">

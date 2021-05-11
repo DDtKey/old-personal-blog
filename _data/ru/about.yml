@@ -1,0 +1,68 @@
+# Edit Author details (For multi authors check _data/about.yml)
+author_logo: profile.png
+author: Артем Медведев
+author_bio: >-
+  Мне <span id="age-container"></span>, работаю backend-разработчиком (Rust, Java), но разработка для меня больше, чем работа 👨🏻‍💻 <br/>
+  Постоянно стремлюсь к профессиональному развитию, получению новых знаний и возможностей 🚀
+author_email: "ddttkey@gmail.com"
+author_location: Russia
+author_website_url: "https://ddtkey.github.io"
+typewrite-text: Добро пожаловать на мою личную страницу!
+
+# Experiences
+author_work_experiences:
+  - company_name: Luxoft
+    company_logo: luxoft.png
+    company_url: https://www.luxoft.com/
+    designation: Lead Software Engineer
+    description:
+    visibility: true
+  - company_name: Evotor
+    company_logo: evotor.png
+    company_url: https://evotor.ru/
+    designation: Senior Java Software Engineer
+    description: >-
+      Проектирование и разработка горизонтально масштабируемых веб-сервисов в рамках платежной системы Эвотор.PAY.
+      Интеграция с банковскими системами по API. <br/><br/>
+
+      Технический стек: <i>Spring (MVC, Data, Messaging, Websocket), AWS S3, Kafka, Oracle DB, Angular</i> и др.
+    visibility: true
+  - company_name: Texuna Technologies
+    company_logo: texuna.png
+    company_url: https://texuna.com/
+    designation: Java Software Engineer
+    description: >-
+      Разработка веб-сервисов для образовательного сектора Великобритании, тесная работа с бизнес-аналитиками и QA.<br/>
+      Техническая оценка, распределение и выполнение поставленных задач, ведение проектов и наставничество.<br/>
+      Работа в строгом соблюдении политики защиты приватных данных(GDPR).<br/><br/>
+
+      Технический стек: <i>Spring, AWS, Angular, d3js, Wicket, PostgreSQL, OLAP (MDX)</i> и др.
+    visibility: true
+  - company_name: Simplex-Sofware
+    company_logo: simplex-software.png
+    company_url: https://simplex-software.ru/
+    designation: Java Developer
+    description: >-
+      Выполнение проектов в соответствии с ТЗ(серверная часть, в том числе разработка blockchain решений),
+      с использованием следующего стека: <i>Spring Framework, Wicket, ZK Framework, Hibernate, XPath, web3j</i>.<br/><br/>
+
+      Участие в разработке архитектуры приложений. <br/>
+      Code-review, помощь и проведение лекций для коллег.
+    visibility: true
+
+# Education
+author_education_details:
+  - college_logo: mgou-logo.png
+    college_name: МГОУ (Московский Государственный Областной Университет)
+    college_url: https://mgou.ru/
+    college_degree: Управление проектами
+    description: Степень бакалавра
+    visibility: true
+
+# Projects
+#author_project_details:
+#              - project_thumbnail: gamershub.png
+#                project_title: Gamers Hub
+#                project_description: A Platform built for Gamers and Game Devs
+#                project_url: https://gamershub.in
+#                visibility: true

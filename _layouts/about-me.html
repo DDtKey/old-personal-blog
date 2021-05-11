@@ -6,9 +6,9 @@ layout: default
   <div class="col-lg-4 ">
     <div class="card" id="profile-card">
       <a href="/">
-        <img src="{{site.url}}{{site.baseurl}}/assets/img/{{ site.author_logo }}" class="profile-img" />
+        <img src="{{site.url}}{{site.baseurl}}/assets/img/{{ site.data.about.author_logo }}" class="profile-img" />
       </a>
-      <h1 class="profile-name">{{ site.title }}</h1>
+      <h1 class="profile-name">{{ site.data.about.author }} </h1> ({{ site.data.about.author_username }})
       <p class="profile-bio">{{ site.subtitle }}</p>
       {% if site.github_username %} {%- include github_follow_button.html -%} {%
       endif %}
@@ -84,17 +84,17 @@ layout: default
         {% endif %}
       </p>
 
-      {% if site.author_location %}
-      <h6><i class="fas fa-map-marker-alt"></i> {{ site.author_location }}</h6>
-      {% endif %} {% if site.author_email %}
-      <h6><i class="fas fa-envelope"></i> {{ site.author_email }}</h6>
-      {% endif %} {% if site.author_website_url %}
-      <h6><i class="fas fa-link"></i> {{ site.author_website_url }}</h6>
+      {% if site.data.about.author_location %}
+      <h6><i class="fas fa-map-marker-alt"></i> {{ site.data.about.author_location }}</h6>
+      {% endif %} {% if site.data.about.author_email %}
+      <h6><i class="fas fa-envelope"></i> {{ site.data.about.author_email }}</h6>
+      {% endif %} {% if site.data.about.author_website_url %}
+      <h6><i class="fas fa-link"></i> {{ site.data.about.author_website_url }}</h6>
       {% endif %}
     </div>
 
     <div class="card">
-      <h1>Skills</h1>
+      <h1>{{site.data.local.skills}}</h1>
 
       {%- include author_skills.html -%}
     </div>
@@ -108,16 +108,16 @@ layout: default
     {% endif %}
   </div>
   <div class="col-lg-7">
-    {% if site.author_bio %}
+    {% if site.data.about.author_bio %}
     <div class="card">
-      <h1 class="card-title">About</h1>
-      <p>{{ site.author_bio }}</p>
+      <h1 class="card-title">{{site.data.local.about}}</h1>
+      <p>{{ site.data.about.author_bio }}</p>
     </div>
     {% endif %} {% if site.show_author_project_details == true %}
     <div id="author_projects" class="card">
-      <h1 class="card-title">Projects</h1>
+      <h1 class="card-title">{{site.data.local.projects}}</h1>
       <br />
-      {% for project in site.author_project_details %} {% if project.visibility
+      {% for project in site.data.about.author_project_details %} {% if project.visibility
       == true %}
       <div class="row" id="project-card">
         <div class="col-md-6">
@@ -142,9 +142,9 @@ layout: default
     </div>
     {% endif %} {% if site.show_author_work_experiences == true %}
     <div class="card">
-      <h1 class="card-title">Work Experience</h1>
+      <h1 class="card-title">{{site.data.local.work_exp}}</h1>
       <br />
-      {% for exp in site.author_work_experiences %} {% if exp.visibility == true
+      {% for exp in site.data.about.author_work_experiences %} {% if exp.visibility == true
       %}
       <div class="row">
         <div class="col-md-2">
@@ -164,9 +164,9 @@ layout: default
     </div>
     {% endif %} {% if site.show_author_education_details == true %}
     <div class="card">
-      <h1 class="card-title">Education</h1>
+      <h1 class="card-title">{{site.data.local.education}}</h1>
       <br />
-      {% for detail in site.author_education_details %} {% if detail.visibility
+      {% for detail in site.data.about.author_education_details %} {% if detail.visibility
       == true %}
       <div class="row">
         <div class="col-md-2">

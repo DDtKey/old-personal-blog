@@ -126,6 +126,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
+  <script src="{{site.url}}{{site.baseurl}}/assets/js/custom-functions.js"></script>
+
+  <script>
+    function getCurrentHost() {
+      return window.location.protocol + "//" + window.location.host;
+    }
+
+    function getDefaultBaseUrl() {
+      return getCurrentHost() + "{{page.url}}";
+    }
+
+    function redirectToDefaultBaseUrl() {
+      window.location.replace(getDefaultBaseUrl());
+    }
+  </script>
+
  <!-- for Mathjax support -->
   {% if page.usemathjax %}
    <script type="text/x-mathjax-config">

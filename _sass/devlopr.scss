@@ -740,6 +740,14 @@ header {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+.btn-lang-switch {
+  color: var(--main-text-color)!important;
+
+  &__active {
+    color: var(--link-color)!important;
+    font-weight: bold;
+  }
+}
 
 #newsletter_footer {
     background-color: var(--newsletter-background-color);
