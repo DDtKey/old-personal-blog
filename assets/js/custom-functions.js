@@ -5,7 +5,10 @@ function calculateYearDiff(year) {
 }
 
 function populateAge() {
-    document.getElementById("age-container").innerText = calculateYearDiff(MY_BIRTH_YEAR);
+    const ageContainer = document.getElementById("age-container");
+    if (ageContainer) {
+        ageContainer.innerText = calculateYearDiff(MY_BIRTH_YEAR);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", populateAge);
