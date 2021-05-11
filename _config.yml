@@ -51,10 +51,14 @@ markdown: kramdown
 highlighter: rouge
 permalink: pretty
 
-# pagination of posts
-paginate: 4
-per_page: 4
-paginate_path: "/blog/page/:num/"
+# pagination config
+pagination:
+  enabled: true
+  debug: false
+  per_page: 4
+  permalink: '/page/:num/'
+  sort_field: 'date'
+  sort_reverse: true
 
 # minify
 # compress_html:
@@ -65,12 +69,12 @@ paginate_path: "/blog/page/:num/"
 #     envs: ['development']
 
 # Archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#   layout: archive
-#   permalinks:
-#     category: '/category/:name/'
+jekyll-archives:
+  enabled:
+    - categories
+  layout: category_archive
+  permalinks:
+    category: '/blog/category/:name/'
 
 collections:
   products:
@@ -94,13 +98,14 @@ defaults:
 
 # Build settings
 plugins:
-  - jekyll-paginate
+  - jekyll-paginate-v2
   - jekyll-gist
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-menus
   - jekyll-admin
   - jekyll-polyglot
+  - jekyll-archives
 
 # Jekyll Admin Config
 jekyll_admin:

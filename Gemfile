@@ -18,12 +18,13 @@ group :jekyll_plugins do
     gem 'jgd', '~> 1.12'
     gem "jekyll-polyglot", '~> 1.4.1'
     gem 'jekyll-feed', '~> 0.13.0'
-    gem 'jekyll-paginate', '~> 1.1.0'
     gem 'jekyll-gist', '~> 1.5.0'
     gem 'jekyll-seo-tag', '~> 2.6.1'
     gem 'jekyll-sitemap', '~> 1.4.0'
     gem 'jekyll-menus', '~> 0.6.1'
     gem 'jekyll-admin', '~> 0.11.0'
+    gem "jekyll-paginate-v2", "~> 3.0"
+    gem "jekyll-archives", "~> 2.2"
 end
 
 
