@@ -3,7 +3,7 @@ subtitle: Personal website & blog
 description: >- # this means to ignore newlines until "baseurl:"
   DDtKey's personal website & blog.
 
-url: "" # the base hostname & protocol for your site, e.g. https://example.github.io
+url: "https://ddtkey.github.io" # the base hostname & protocol for your site, e.g. https://example.github.io
 baseurl: "" # the subpath of your site, e.g. /blog
 
 # i8n
@@ -34,7 +34,7 @@ flickr_username:
 
 #for comments ( we got Disqus and Hyvor Commenting, uncomment the one you want to use )
 
-disqus_shortname: DDtKey
+disqus_shortname: ddtkey
 #hyvor_talk_website_id:
 
 # wakatime username (coding activity)
