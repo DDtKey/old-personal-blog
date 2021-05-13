@@ -4,7 +4,7 @@ username: DDtKey
 bio: "Hi, my name is Artem. I'm a backend developer (Rust, Java)"
 site: https://ddtkey.github.io
 avatar: ddtkey.png
-email: ddttkey@gmail.com
+email: i@ddtkey.com
 social:
     - title: "github"
       url: "https://github.com/DDtKey"
