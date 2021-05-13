@@ -500,9 +500,8 @@ header {
 .jumbotron {
     background-color: var(--main-background-color) !important;
     background-image: url('/assets/img/background.jpg');
-    background-attachment: fixed;
     background-size: cover;
-    background-position: center;
+    background-position: 50% 50%;
 }
 /* pagination */
 .pagination-link{
