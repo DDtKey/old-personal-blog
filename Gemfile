@@ -25,6 +25,7 @@ group :jekyll_plugins do
     gem 'jekyll-admin', '~> 0.11.0'
     gem "jekyll-paginate-v2", "~> 3.0"
     gem "jekyll-archives", "~> 2.2"
+    gem "jekyll-email-protect", "~> 1.1"
 end
 
 

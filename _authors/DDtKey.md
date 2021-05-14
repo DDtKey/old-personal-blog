@@ -2,7 +2,7 @@
 name: Artem Medvedev
 username: DDtKey
 bio: "Hi, my name is Artem. I'm a backend developer (Rust, Java)"
-site: https://ddtkey.github.io
+site: https://ddtkey.com
 avatar: ddtkey.png
 email: i@ddtkey.com
 social:

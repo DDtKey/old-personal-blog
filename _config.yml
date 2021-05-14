@@ -106,6 +106,7 @@ plugins:
   - jekyll-admin
   - jekyll-polyglot
   - jekyll-archives
+  - jekyll-email-protect
 
 # Jekyll Admin Config
 jekyll_admin:

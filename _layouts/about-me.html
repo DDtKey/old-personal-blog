@@ -87,7 +87,7 @@ layout: default
       {% if site.data.about.author_location %}
       <h6><i class="fas fa-map-marker-alt"></i> {{ site.data.about.author_location }}</h6>
       {% endif %} {% if site.data.about.author_email %}
-      <h6><i class="fas fa-envelope"></i> {{ site.data.about.author_email }}</h6>
+      <h6><i class="fas fa-envelope"></i> <a href="mailto:{{ site.data.about.author_email | encode_email }}" title="Contact me">{{ site.data.about.author_email }}</a></h6>
       {% endif %} {% if site.data.about.author_website_url %}
       <h6><i class="fas fa-link"></i> {{ site.data.about.author_website_url }}</h6>
       {% endif %}
