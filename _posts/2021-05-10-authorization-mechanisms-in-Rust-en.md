@@ -13,97 +13,95 @@ permalink: /blog/authz-mechanisms-in-Rust/
 lang: en
 ---
 
-> TODO: English version
+# Authorization mechanisms in Rust web applications
 
-# Механизмы авторизации в web-приложениях на Rust
-
-Для обеспечения безопасности приложений мы используем такие механизмы как аутентификация и авторизация. Думаю, многие из вас знакомы с этими концепциями и в этой статье мы сфокусируемся на понятие авторизации и связанных с ней моделях контроля доступом.
+To ensure application security, we use mechanisms such as authentication and authorization. I think many of you are familiar with these concepts and in this article we will focus on the concept of authorization and related access control models.
 
 <p align="center">
 <img alt="security" width="500" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/efm92xeipv61p5j4q6i4.jpg"/>
 </p>
 
 <details>
-<summary><b><i>Определения терминов, которые используются в статье</i></b></summary>
+<summary><b><i>Definitions of terms used in the article</i></b></summary>
 
-Важно понимать отличия авторизации от аутентификации:
+It's important to understand the difference between authorization and authentication:
 
-> **_Аутентификация_** – процесс подтверждения вашей личности и доказательства того, что вы являетесь непосредственным клиентом системы (посредством пароля, токена или любой другой формы учетных данных).
+> **_Authentication_** – a process of verifying your identity and proving that you are a user of the system (by means of a password, token or any other form of credentials).
 
-> **_Авторизация_** в свою очередь – это механизм, в результате которого запрос к определенному ресурсу системы должен быть разрешен или отклонен.
+> **_Authorization_** - a mechanism whose task is to allow or deny a request for a specific system resource.
 
-> **_Субъект доступа_** – пользователь или процесс, который запрашивает доступ к ресурсу.
+> **_Access subject_** – a user or process that is requesting access to the resource.
 
-> **_Объект доступа_** – напротив, является ресурсом, к которому запрашивается доступ со стороны субъекта.
+> **_Access object_** – on the contrary, it's a resource to which access is requested by the subject.
 
-> **_Крейт_ (_Crate_)** –библиотека или исполняемая программа в Rust.
+> **_Crate_** – a library or executable (binary) program in Rust.
 
 </details>
 
-К процессу авторизации относится понятие **_политики контроля доступа_**, в соответствии с которой и определяется набор допустимых действий конкретного пользователя (субъекта доступа) над ресурсами системы (объект доступа).
+The authorization process includes the concept of **_access control policy_**, in accordance with which the set of permissible actions of a particular user (access subject) over the system resources (access objects) is determined.
 
-А также **_модель контроля доступа_** – общая схема для разграничения доступа посредством пользовательской политики, которую мы выбираем в зависимости от различных факторов и требований к системе.
+And also the **_access control model_** is a general scheme for delimiting access through a user policy, which we choose depending on various factors and system requirements.
 
-**Давайте рассмотрим основные модели контроля доступа:**
+**Let's take a look at the basic access control models:**
 
-*   **DAC** (_Discretionary access-control_) – избирательное (дискреционное) управление доступом
+*   **DAC** - _Discretionary access-control_
 
 <img alt="Discretionary access-control" width="200" align="right" src="https://habrastorage.org/getpro/habr/upload_files/f9a/1f0/c92/f9a1f0c925904764179768c4f1a06d87.png"/>
 
-Данная парадигма позволяет пользователям самостоятельно передавать право на какие-либо действия над его данными другим участникам системы, для чего используются _списки контроля доступа_ (**ACL**).
+This paradigm allows users to independently grant the right to any action on their data to other system participants, for which _access control lists_ (**ACL**) are used.
 
-Наиболее распространено применение в случаях, когда пользователи непосредственно владеют некими ресурсами и могут самостоятельно решать кому позволять взаимодействие с ними.
+Most often used in cases where users directly own certain resources and can independently decide who to allow interaction with them.
 
-Примером могут служить операционные системы или социальные сети, где люди самостоятельно меняют видимость их контента.
+An example would be operating systems or social networks, where people independently change the visibility of their content.
 
 
-
-*   **MAC** (_Mandatory access-control_) – мандатное управление доступом
+*   **MAC** - _Mandatory access-control_
 
 <img alt="Discretionary access-control" width="200" align="left" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cakv03u0jm0mw77cms0u.png"/>
 
-Была разработана в государственных целях с акцентом на применение в чрезвычайно защищенных системах (например, военных), где и получила наибольшее распространение.
+It was developed for government purposes with a focus on application in extremely secure systems (for example, military), where it was most widespread.
 
-Защита данных основана на метках конфиденциальности (уровень секретности или важности), с помощью которых происходит проверка наличия уровня доступа у субъектов.  Характерным также является централизованная выдача прав управляющим органом.
+Data protection is based on confidentiality labels (level of secrecy or importance), through which the level of access of subjects is checked. As a rule, the rights are issued centrally by the management body.
 
-Пожалуй, MAC одна из самых строгих и безопасных моделей, но с этим связана сложность и высокая стоимостьреализации и поддержания инфраструктуры вокруг этого решения (есть множество способов, требующих тщательного планирования).
+_MAC_ is perhaps one of the most rigorous and secure models, but it comes with the complexity and high cost of implementing and maintaining the infrastructure around it (there are many ways that require careful planning).
 
 
-*   **RBAC** (_Role-Based access-control_) – управление доступом на основе ролей
+*   **RBAC** - _Role-Based access-control_
 
-Наиболее распространенная и многим известная модель, которая хорошо накладывается на предметные бизнес-области и коррелирует с должностными функциями. Является неким развитием _DAC_, где привилегии группируются в соответствующие им роли.
+The most common and well-known model that fits well with business domains and correlates with job functions. It is a kind of development of _DAC_, where privileges are grouped into their respective roles.
 
-Каждый субъект может обладать перечнем ролей, где роль в свою очередь может предоставлять доступ к некому перечню объектов.
+Each subject can have a list of roles, where the role, in turn, can provide access to a certain list of objects.
 
-Следует отметить, что в рамках RBAC иногда выделяют **PBAC** (_Permission-Based access-control_) модель контроля доступа на основе разрешений, когда для каждого ресурса системы выделяется набор действий (например: `READ_DOCUMENT`, `WRITE_DOCUMENT`, `DELETE_DOCUMENT`) и связывают с субъектом через соотношение с ролями, напрямую с пользователем или гибридным подходом – где субъект может обладать ролью и отдельными привилегиями.
+It should be noted that in RBAC the **PBAC** (_Permission-Based access-control_) model is sometimes allocated when a set of actions is allocated for each resource in the system (for example: `READ_DOCUMENT`,` WRITE_DOCUMENT `,` DELETE_DOCUMENT`) and bind it with the subject through the relationship with roles, directly with the user, or a hybrid approach, when the subject can have a role and separate privileges.
 
-*   **ABAC** (_Attribute-Based access-control_) – управление доступом на основе атрибутов
+*   **ABAC** - _Attribute-Based access-control_
 
 <p align="center">
 <img alt="Discretionary access-control" width="500" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kyewt05htsng3i43djgt.png"/>
 </p>
 
-В данном подходе необходимо ведение специальных политик, которые объединяют атрибуты субъектов и объектов, а решение о допуске предоставляется на основе анализа и сравнительной оценки этих атрибутов.
+In this approach, it's necessary to maintain special policies that combine the attributes of subjects and objects, and the access decision is provided based on the analysis and comparison of these attributes.
 
-Это наиболее гибкий из описанных подходов с огромным количеством возможных комбинаций, который позволяет принимать решения на основе таких параметров, как время запроса, местоположение, должность сотрудника и т.п., но требует более детального планирования политик для предотвращения несанкционированного доступа.
+This is the most flexible of the described models with a huge number of possible combinations, which allows making decisions based on such parameters as request time, location, employee position, etc., but requires more detailed planning of policies to prevent unauthorized access.
 
-Для применения ABAC требуется некий механизм интерпретации политик и некого синтаксического подмножества, что может влечь за собой затраты времени исполнения (в случае динамической реализации) или компиляции (при генерации кода).
-
-Подробнее о некоторых из них можно почитать в [материалах OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Access_Control_Cheat_Sheet.html#permission-based-access-control) (Open Web Application Security Project) и в [документации IBM](https://www.ibm.com/docs/en/sig-and-i/10.0.0?topic=planning-access-control-models).
+ABAC requires some mechanism for interpreting policies and some syntactic subset, which can entail execution time (in the case of a dynamic implementation) or compilation (in the case of code generation).
 
 
-Контроль доступа составляет очень важную часть веб приложений, поскольку необходимо строго соблюдать разграничение доступа к ресурсам и данным в зависимости от привилегий пользователей и в особенности персональным данным, защита которых предусмотрена законодательными аспектами.
+You can read more about some of the models in [OWASP materials](https://cheatsheetseries.owasp.org/cheatsheets/Access_Control_Cheat_Sheet.html#permission-based-access-control) (Open Web Application Security Project) and in [IBM documentation](https://www.ibm.com/docs/en/sig-and-i/10.0.0?topic=planning-access-control-models).
+
+
+Access control is a very important part of web applications, since it is necessary to strictly observe the delimitation of access to resources and data (especially personal ones - the protection of which is provided for by legislative aspects), depending on the privileges of users.
 
 ---
 
-## Что мы имеем в веб-фреймворках на Rust?
+## What do we have in Rust web frameworks?
 
 
-Как правило, для реализации механизмов защиты от несанкционированного доступа в популярных веб-фреймворках (таких, как actix-web, Rocket или tide), используются реализации Middleware, FromRequest или Guard (Filter в случае warp).
+Typically, to implement anti-tampering mechanisms in popular web frameworks (such as actix-web, Rocket, or tide), `Middleware`, `FromRequest`, or `Guard` (`Filter` in the case of warp) implementations are used.
 
-То есть в неком промежуточном ПО, где из запросов можно извлечь данные о субъекте и объекте доступа. Такой подход довольно удобен, поскольку позволят разграничить зоны ответственности.
+That is, in some kind of middleware, where data about the subject and object of access can be extracted from requests. This approach is quite convenient, since it will allow you to delimit areas of responsibility.
 
-Это могут быть как библиотечные реализации в виде крейтов, так и пользовательские. Но на текущий момент, предпочтения отдают собственным реализациям, что вероятно связано с небольшим количеством готовых реализаций и спецификой применяемых политик в рамках различных проектов.
+It can be both library (in the form of crates), and custom implementations. But at the moment, the preference is often given to own implementations, which is probably due to the small number of production-ready solutions and the specifics of the applied policies in various projects.
 
 ### [casbin-rs]
 
@@ -122,9 +120,9 @@ lang: en
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/casbin/lobby)
 [![forum](https://img.shields.io/badge/forum-join-%23cde201)](https://forum.casbin.org/)
 
-Наиболее обширное production-ready решение с открытым исходным кодом, которое мне удалось найти – это адаптация Casbin (casbin-rs), с внушительным количеством поддерживаемых моделей доступа (заявлены ACL, RBAC, ABAC) и возможностью гибкого изменения политики посредством изменения только лишь конфигурационного файла.
+The most complete production-ready open source solution that I have been able to find is the adaptation of Casbin (`casbin-rs`), with an impressive number of supported access models (_ACL, RBAC, ABAC_ declared) and the ability to flexibly change policy by changing only the configuration file ...
 
-В casbin используется своя мета-модель _PERM (Policy, Effect, Request, Matchers)_ для построения модели доступа, что дает большую гибкость, но привносит затраты на ее интерпретацию и валидацию.
+Casbin uses its own meta-model _PERM (Policy, Effect, Request, Matchers)_ to build an access model, which gives more flexibility, but introduces the cost of its interpretation and validation.
 
 ```ini
 # Request definition
@@ -144,16 +142,16 @@ e = some(where (p.eft == allow))
 m = r.sub == p.sub && r.obj == p.obj && r.act == p.act
 ```
 
-При ее описании можно легко допустить ошибку, в связи с чем был разработан [веб-редактор моделей](https://casbin.org/editor/) для удобной и корректной модификации
+When describing it, you can easily make a mistake, and therefore the [web editor of models](https://casbin.org/editor/) was developed for convenient and correct modification.
 
-Администрирование привилегий для вашей системы происходит через описание политики (в файле или базе данных), соответствующей формату PERM модели.
+The administration of privileges for your system occurs through the description of the policy (in a file or database) corresponding to the PERM model format.
 
 ```
 p, alice, data1, read
 p, bob, data2, write
 ```
 
-К сожалению, это вызывает определенное дублирование идентификаторов объектов и субъектов и неочевидность на уровне вызывающего кода.
+Unfortunately, this causes a certain duplication of object and subject identifiers and is not obvious at the level of the calling code.
 
 ```rust
 use casbin::prelude::*;
@@ -179,13 +177,13 @@ async fn main() -> () {
 }
 ```
 
-Такой инструмент определенно заслуживает уважения.  Огромное спасибо сообществу, которое вносит свой вклад в его развитие!
+Such a tool definitely deserves respect. Many thanks to the community for contributing to its development 👏 !
 
-Но, как мы можем наблюдать, разработчики учитывают определенные нюансы и отсюда вытекает стремление писать собственные решения из проекта в проект, поскольку требования могут быть детерминированы изначально, а вся предоставляемая гибкость может так и не понадобиться, и следовательно, мы вольны выбирать более узкую и легковесную реализацию, подходящую под наши требования.
+But, as we can see, developers take into account certain nuances and sometimes want to write their own solutions from project to project, since the requirements can be defined initially, and all the flexibility provided by the library may not be needed, and therefore, we can choose a narrower and lighter solution. that meets our requirements.
 
-Как это было и у меня, когда я взялся за написание backend на Rust. Мне было достаточно модели PBAC и исходя из своего опыта разработки веб-приложений, в большинстве типовых проектов достаточно моделей ACL/RBAC.
+As it was with me when I started writing a backend in Rust. The PBAC model was enough for me, and based on my experience in developing web applications, in most typical projects, the _ACL_/_RBAC_ models are enough.
 
-В связи с чем я пришел к идее реализации и вынесения собственного решения в качестве отдельного крейта с открытым исходным кодом: _actix-web-grants_.
+I came up with the idea of implementing my own solution as a separate open source crate: _actix-web-grants_.
 
 ### [actix-web-grants](https://github.com/DDtKey/actix-web-grants)
 
@@ -203,11 +201,11 @@ async fn main() -> () {
 ![Apache 2.0 or MIT licensed](https://img.shields.io/crates/l/actix-web-grants)
 
 
-Основная идея проекта состоит в использовании встроенной middleware для получения привилегий пользователей из запроса и указанию необходимых разрешений у пользователей непосредственно на ваших эндпоинтах.
+The main idea of the project is to use built-in middleware to get user privileges from a request and specify the necessary permissions directly on your endpoints.
 
-Это довольно легковесный крейт с простым подключением, с использованием которого можно, как минимум, применять следующие модели: списки доступа(ACL), управление доступом на основе ролей или разрешений(RBAC/PBAC).
+This is a fairly lightweight crate with simple integration, using which you can at least apply the following models: access lists (ACL), role-based or permission-based access control (_RBAC_/_PBAC_).
 
-Таким образом, нам достаточно реализовать функцию получения привилегий:
+Thus, we just need to implement the function of obtaining privileges:
 
 ```rust
 // Sample application with grant protection based on extracting by your custom function
@@ -233,9 +231,9 @@ async fn extract(_req: &ServiceRequest) -> Result<Vec<String>, Error> {
 }
 ```
 
-Данный подход добавляет гибкости и позволяет нам реализовывать авторизацию вне зависимости от способов аутентификации и хранения привилегий пользователей: это может быть JWT-токен, база данных, промежуточный кэш или любое другое решение.
+This approach adds flexibility and allows us to implement authorization regardless of the methods of authentication and storage of user privileges: it can be a _JWT token_, a _database_, an _intermediate cache_, or _any other solution_.
 
-После чего мы можем расставлять ограничения непосредственно над нашими ресурсами:
+Then we can place restrictions directly on our resources (via macro):
 
 ```rust
 use actix_web_grants::proc_macro::{has_roles};
@@ -247,13 +245,13 @@ async fn macro_secured() -> HttpResponse {
 }
 ```
 
-Возможность влиять на политику доступа напрямую в коде является отличительной частью actix-web-grants, снижая дублирование объектов доступа и предоставляя нам наглядную информацию о необходимых привилегиях.
+The ability to change to access policy directly in the code is a distinctive part of _actix-web-grants_, reducing duplication of access objects and providing us with visual information about the required privileges.
 
-Для полноты картины, написаны минимальные примеры приложений с идентичным профилем использования и проведены замеры производительности процесса авторизации (на базе [wrk](https://github.com/wg/wrk)) для удовлетворения собственного интереса.
+For the sake of completeness, minimal examples of applications with an identical usage profile were written and the performance of the authorization process was measured (based on [wrk](https://github.com/wg/wrk)) to satisfy our own interest.
 
-Примеры написаны с упрощенной реализацией модели RBAC для двух тест-кейсов авторизации: запрос к ресурсу разрешен и отклонен, в соответствие с наличием необходимых ролей. Для аутентификации использовались заглушки. Весь код опубликован на GitHub: _[actix-web-authz-benchmark](https://github.com/DDtKey/actix-web-authz-benchmark)_ (больше примеров всегда можно найти на страницах самих проектов).
+The examples are written with a simplified implementation of the RBAC model for two test cases of authorization: a request to a resource is allowed and denied, in accordance with the presence of the necessary roles. Stubs were used for authentication. All code is available on GitHub: _[actix-web-authz-benchmark](https://github.com/DDtKey/actix-web-authz-benchmark)_ (more examples can always be found on the pages of these projects).
 
-Результаты бенчмарка можете наблюдать в таблице:
+The benchmark results can be seen in the table:
 
 <table border="2">
   <tr>
@@ -286,11 +284,11 @@ async fn macro_secured() -> HttpResponse {
 
 > _rustc: v1.52.0 (stable); CPU: 2,6 GHz 6-Core Intel Core i7; RAM: 16 GB_
 
-Таким образом, мы видим, что [actix-web-grants] позволяет более просто интегрировать и администрировать политики доступа над конечным точками (endpoint), при этом не уступает в производительности по сравнению с [casbin-rs].
+Thus, we see that [actix-web-grants] makes it easier to integrate and administer access policies over endpoints (endpoints), while not inferior in performance compared to [casbin-rs].
 
 #### Post Scriptum
 
-Данная библиотека пока не имеет в своём арсенале интеграций с множеством веб-фреймворков, но у меня есть планы по вынесению некоторых абстракций и написанию модулей под другие фреймворки, внесению некоторых улучшений (например, возможность наследования ролей и поддержки пользовательских типов). Буду рад любым предложениям и вкладу!
+This library does not yet have integrations with many web frameworks in its arsenal, but I have plans to introduce some abstractions and write modules for other frameworks, make some improvements (for example, the ability to inherit roles and support custom types). Any suggestions and contributions will be welcome!
 
 
 [casbin-rs]: https://github.com/casbin/casbin-rs
