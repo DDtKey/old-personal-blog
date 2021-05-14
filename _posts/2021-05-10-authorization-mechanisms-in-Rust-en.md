@@ -6,19 +6,17 @@ author: DDtKey
 date: '2021-05-10'
 category: ['rust', 'authz']
 tags: authz, api security, authorization, access-control, rust, casbin, actix-web
-thumbnail: /assets/img/posts/authz-rust-preview.png
+thumbnail: /assets/img/posts/authz-in-rust/preview.png
 keywords: how to configure authz, actix-web, casbin, access-control
 usemathjax: false
 permalink: /blog/authz-mechanisms-in-Rust/
 lang: en
 ---
 
-# Authorization mechanisms in Rust web applications
-
 To ensure application security, we use mechanisms such as authentication and authorization. I think many of you are familiar with these concepts and in this article we will focus on the concept of authorization and related access control models.
 
 <p align="center">
-<img alt="security" width="500" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/efm92xeipv61p5j4q6i4.jpg"/>
+<img alt="security" width="500" src="/assets/img/posts/authz-in-rust/security.png"/>
 </p>
 
 <details markdown="1">
@@ -47,7 +45,7 @@ And also the **_access control model_** is a general scheme for delimiting acces
 
 *   **DAC** - _Discretionary access-control_
 
-<img alt="Discretionary access-control" width="200" align="right" src="https://habrastorage.org/getpro/habr/upload_files/f9a/1f0/c92/f9a1f0c925904764179768c4f1a06d87.png"/>
+<img alt="Discretionary access-control" width="200" align="right" src="/assets/img/posts/authz-in-rust/dac.png"/>
 
 This paradigm allows users to independently grant the right to any action on their data to other system participants, for which _access control lists_ (**ACL**) are used.
 
@@ -58,7 +56,7 @@ An example would be operating systems or social networks, where people independe
 
 *   **MAC** - _Mandatory access-control_
 
-<img alt="Discretionary access-control" width="200" align="left" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cakv03u0jm0mw77cms0u.png"/>
+<img alt="Discretionary access-control" width="200" align="left" src="/assets/img/posts/authz-in-rust/mac.png"/>
 
 It was developed for government purposes with a focus on application in extremely secure systems (for example, military), where it was most widespread.
 
@@ -78,7 +76,7 @@ It should be noted that in RBAC the **PBAC** (_Permission-Based access-control_)
 *   **ABAC** - _Attribute-Based access-control_
 
 <p align="center">
-<img alt="Discretionary access-control" width="500" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kyewt05htsng3i43djgt.png"/>
+<img alt="Discretionary access-control" width="500" src="/assets/img/posts/authz-in-rust/abac.png"/>
 </p>
 
 In this approach, it's necessary to maintain special policies that combine the attributes of subjects and objects, and the access decision is provided based on the analysis and comparison of these attributes.
@@ -108,7 +106,7 @@ It can be both library (in the form of crates), and custom implementations. But 
 
 <p align="center">
     <a href="https://github.com/casbin/casbin-rs">
-        <img alt="casbin-rs" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/aajqjgvqnqy76sfxx2w2.png"/>
+        <img alt="casbin-rs" src="/assets/img/posts/authz-in-rust/casbin.png"/>
     </a>
 </p>
 
@@ -190,7 +188,7 @@ I came up with the idea of implementing my own solution as a separate open sourc
 
 <p align="center">
     <a href="https://github.com/DDtKey/actix-web-grants">
-        <img alt="actix-web-grants" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/94wfabr7z24i6jl2qo4z.png"/>
+        <img alt="actix-web-grants" src="/assets/img/posts/authz-in-rust/awg.png"/>
     </a>
 </p>
 
@@ -254,11 +252,11 @@ The examples are written with a simplified implementation of the RBAC model for 
 
 The benchmark results can be seen in the table:
 
-<table border="2">
+<table class="table-bordered table">
   <tr>
-   <td rowspan="2">Benchmark</td>
-   <td colspan="2"><strong>casbin-rs</strong></td>
-   <td colspan="2"><strong>actix-web-grants</strong></td>
+   <td rowspan="2" align="center">Benchmark</td>
+   <td colspan="2" align="center"><strong>casbin-rs</strong></td>
+   <td colspan="2" align="center"><strong>actix-web-grants</strong></td>
   </tr>
   <tr>
    <td>Latency</td>
@@ -281,7 +279,6 @@ The benchmark results can be seen in the table:
    <td>20.23k</td>
   </tr>
 </table>
-<br/>
 
 > _rustc: v1.52.0 (stable); CPU: 2,6 GHz 6-Core Intel Core i7; RAM: 16 GB_
 

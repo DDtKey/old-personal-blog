@@ -6,19 +6,17 @@ author: DDtKey
 date: '2021-05-10'
 category: ['rust', 'authz']
 tags: authz, api security, authorization, access-control, rust
-thumbnail: /assets/img/posts/authz-rust-preview.png
+thumbnail: /assets/img/posts/authz-in-rust/preview.png
 keywords: настройка авторизации, actix-web, casbin, контроль доступа
 usemathjax: false
 permalink: /blog/authz-mechanisms-in-Rust/
 lang: ru
 ---
 
-# Механизмы авторизации в web-приложениях на Rust
-
 Для обеспечения безопасности приложений мы используем такие механизмы как аутентификация и авторизация. Думаю, многие из вас знакомы с этими концепциями и в этой статье мы сфокусируемся на понятие авторизации и связанных с ней моделях контроля доступом.
 
 <p align="center">
-<img alt="security" width="500" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/efm92xeipv61p5j4q6i4.jpg"/>
+<img alt="security" width="500" src="/assets/img/posts/authz-in-rust/security.png"/>
 </p>
 
 <details markdown="1">
@@ -46,7 +44,7 @@ lang: ru
 
 *   **DAC** (_Discretionary access-control_) – избирательное (дискреционное) управление доступом
 
-<img alt="Discretionary access-control" width="200" align="right" src="https://habrastorage.org/getpro/habr/upload_files/f9a/1f0/c92/f9a1f0c925904764179768c4f1a06d87.png"/>
+<img alt="Discretionary access-control" width="200" align="right" src="/assets/img/posts/authz-in-rust/dac.png"/>
 
 Данная парадигма позволяет пользователям самостоятельно передавать право на какие-либо действия над его данными другим участникам системы, для чего используются _списки контроля доступа_ (**ACL**).
 
@@ -58,7 +56,7 @@ lang: ru
 
 *   **MAC** (_Mandatory access-control_) – мандатное управление доступом
 
-<img alt="Discretionary access-control" width="200" align="left" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cakv03u0jm0mw77cms0u.png"/>
+<img alt="Discretionary access-control" width="200" align="left" src="/assets/img/posts/authz-in-rust/mac.png"/>
 
 Была разработана в государственных целях с акцентом на применение в чрезвычайно защищенных системах (например, военных), где и получила наибольшее распространение.
 
@@ -78,7 +76,7 @@ lang: ru
 *   **ABAC** (_Attribute-Based access-control_) – управление доступом на основе атрибутов
 
 <p align="center">
-<img alt="Discretionary access-control" width="500" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kyewt05htsng3i43djgt.png"/>
+<img alt="Discretionary access-control" width="500" src="/assets/img/posts/authz-in-rust/abac.png"/>
 </p>
 
 В данном подходе необходимо ведение специальных политик, которые объединяют атрибуты субъектов и объектов, а решение о допуске предоставляется на основе анализа и сравнительной оценки этих атрибутов.
@@ -107,7 +105,7 @@ lang: ru
 
 <p align="center">
     <a href="https://github.com/casbin/casbin-rs">
-        <img alt="casbin-rs" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/aajqjgvqnqy76sfxx2w2.png"/>
+        <img alt="casbin-rs" src="/assets/img/posts/authz-in-rust/casbin.png"/>
     </a>
 </p>
 
@@ -189,7 +187,7 @@ async fn main() -> () {
 
 <p align="center">
     <a href="https://github.com/DDtKey/actix-web-grants">
-        <img alt="actix-web-grants" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/94wfabr7z24i6jl2qo4z.png"/>
+        <img alt="actix-web-grants" src="/assets/img/posts/authz-in-rust/awg.png"/>
     </a>
 </p>
 
@@ -253,11 +251,11 @@ async fn macro_secured() -> HttpResponse {
 
 Результаты бенчмарка можете наблюдать в таблице:
 
-<table border="2">
+<table class="table-bordered table">
   <tr>
-   <td rowspan="2">Benchmark</td>
-   <td colspan="2"><strong>casbin-rs</strong></td>
-   <td colspan="2"><strong>actix-web-grants</strong></td>
+   <td rowspan="2" align="center">Benchmark</td>
+   <td colspan="2" align="center"><strong>casbin-rs</strong></td>
+   <td colspan="2" align="center"><strong>actix-web-grants</strong></td>
   </tr>
   <tr>
    <td>Latency</td>
@@ -280,7 +278,6 @@ async fn macro_secured() -> HttpResponse {
    <td>20.23k</td>
   </tr>
 </table>
-<br/>
 
 > _rustc: v1.52.0 (stable); CPU: 2,6 GHz 6-Core Intel Core i7; RAM: 16 GB_
 
