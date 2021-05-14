@@ -21,7 +21,7 @@ To ensure application security, we use mechanisms such as authentication and aut
 <img alt="security" width="500" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/efm92xeipv61p5j4q6i4.jpg"/>
 </p>
 
-<details>
+<details markdown="1">
 <summary><b><i>Definitions of terms used in the article</i></b></summary>
 
 It's important to understand the difference between authorization and authentication:
@@ -37,6 +37,7 @@ It's important to understand the difference between authorization and authentica
 > **_Crate_** – a library or executable (binary) program in Rust.
 
 </details>
+<br/>
 
 The authorization process includes the concept of **_access control policy_**, in accordance with which the set of permissible actions of a particular user (access subject) over the system resources (access objects) is determined.
 

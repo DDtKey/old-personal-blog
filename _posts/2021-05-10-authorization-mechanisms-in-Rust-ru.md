@@ -21,7 +21,7 @@ lang: ru
 <img alt="security" width="500" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/efm92xeipv61p5j4q6i4.jpg"/>
 </p>
 
-<details>
+<details markdown="1">
 <summary><b><i>Определения терминов, которые используются в статье</i></b></summary>
 
 Важно понимать отличия авторизации от аутентификации:
