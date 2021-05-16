@@ -251,7 +251,7 @@ async fn macro_secured() -> HttpResponse {
 
 Результаты бенчмарка можете наблюдать в таблице:
 
-<table class="table-bordered table">
+<table class="table table-bordered table-responsive">
   <tr>
    <td rowspan="2" align="center">Benchmark</td>
    <td colspan="2" align="center"><strong>casbin-rs</strong></td>

@@ -252,7 +252,7 @@ The examples are written with a simplified implementation of the RBAC model for 
 
 The benchmark results can be seen in the table:
 
-<table class="table-bordered table">
+<table class="table table-bordered table-responsive">
   <tr>
    <td rowspan="2" align="center">Benchmark</td>
    <td colspan="2" align="center"><strong>casbin-rs</strong></td>
