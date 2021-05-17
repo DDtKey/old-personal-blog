@@ -251,33 +251,35 @@ async fn macro_secured() -> HttpResponse {
 
 Результаты бенчмарка можете наблюдать в таблице:
 
-<table class="table table-bordered table-responsive">
-  <tr>
-   <td rowspan="2" align="center">Benchmark</td>
-   <td colspan="2" align="center"><strong>casbin-rs</strong></td>
-   <td colspan="2" align="center"><strong>actix-web-grants</strong></td>
-  </tr>
-  <tr>
-   <td>Latency</td>
-   <td>Req/Sec</td>
-   <td>Latency</td>
-   <td>Req/Sec</td>
-  </tr>
-  <tr>
-   <td>Allowed Endpoint</td>
-   <td>6.18 ms</td>
-   <td>16.27k</td>
-   <td>4.41 ms</td>
-   <td>22.69k</td>
-  </tr>
-  <tr>
-   <td>Denied Endpoint</td>
-   <td>6.70 ms</td>
-   <td>14.98k</td>
-   <td>4.94 ms</td>
-   <td>20.23k</td>
-  </tr>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered">
+      <tr>
+       <td rowspan="2" align="center">Benchmark</td>
+       <td colspan="2" align="center"><strong>casbin-rs</strong></td>
+       <td colspan="2" align="center"><strong>actix-web-grants</strong></td>
+      </tr>
+      <tr>
+       <td>Latency</td>
+       <td>Req/Sec</td>
+       <td>Latency</td>
+       <td>Req/Sec</td>
+      </tr>
+      <tr>
+       <td>Allowed Endpoint</td>
+       <td>6.18 ms</td>
+       <td>16.27k</td>
+       <td>4.41 ms</td>
+       <td>22.69k</td>
+      </tr>
+      <tr>
+       <td>Denied Endpoint</td>
+       <td>6.70 ms</td>
+       <td>14.98k</td>
+       <td>4.94 ms</td>
+       <td>20.23k</td>
+      </tr>
+    </table>
+</div>
 
 > _rustc: v1.52.0 (stable); CPU: 2,6 GHz 6-Core Intel Core i7; RAM: 16 GB_
 
