@@ -18,7 +18,7 @@ author_work_experiences:
     company_url: https://www.luxoft.com/
     designation: Lead Software Engineer
     description: >-
-      Work on the project of an OMS (order message system) for large Russian bank.
+      Work on the project of an OMS (order management system) for large Russian bank.
 
       Responsibilities: Development, research of solutions and creation of proof of concepts, collaboration with colleagues.
       Technologies used: <i>Kotlin, Spring, Kafka, GraphQL, CDC (Debezium) PostgreSQL</i> and etc.
