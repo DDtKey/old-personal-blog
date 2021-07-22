@@ -15,7 +15,11 @@ author_work_experiences:
     company_logo: luxoft.png
     company_url: https://www.luxoft.com/
     designation: Lead Software Engineer
-    description:
+    description: >-
+      Работа над OMS (системы сообщений о заказах) проектом для крупного российского банка.
+      Исследование и разработка решений, создание доказательств концепций (PoF), сотрудничество с коллегами.
+
+      Технический стек:  <i> Kotlin, Spring, Kafka, GraphQL, CDC (Debezium) PostgreSQL </i> и др.
     visibility: true
   - company_name: Evotor
     company_logo: evotor.png

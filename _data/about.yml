@@ -3,7 +3,7 @@ author_logo: profile.png
 author: Artem Medvedev
 author_username: DDtKey
 author_bio: >-
-  Hi, my name is Artem Medvedev. I'm a software developer (Rust, Java, Typescript). <br/>
+  Hi, my name is Artem Medvedev. I'm a software developer (Rust, Java, Kotlin, Typescript). <br/>
   I'm a big fan of software development, it's more than just a job for me. <br/>
   I always strive for professional growth, gaining new knowledge and opportunities 🚀 <br/>
 author_email: "i@ddtkey.com"
@@ -17,7 +17,11 @@ author_work_experiences:
     company_logo: luxoft.png
     company_url: https://www.luxoft.com/
     designation: Lead Software Engineer
-    description: Worked on various Luxoft projects
+    description: >-
+      Work on the project of an OMS (order message system) for large Russian bank.
+
+      Responsibilities: Development, research of solutions and creation of proof of concepts, collaboration with colleagues.
+      Technologies used: <i>Kotlin, Spring, Kafka, GraphQL, CDC (Debezium) PostgreSQL</i> and etc.
     visibility: true
   - company_name: Evotor
     company_logo: evotor.png
