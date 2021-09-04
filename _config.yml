@@ -34,7 +34,7 @@ flickr_username:
 
 #for comments ( we got Disqus and Hyvor Commenting, uncomment the one you want to use )
 
-disqus_shortname: ddtkey
+#disqus_shortname:
 #hyvor_talk_website_id:
 
 # wakatime username (coding activity)

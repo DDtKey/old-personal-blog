@@ -13,7 +13,7 @@ permalink: /blog/authz-mechanisms-in-Rust/
 lang: ru
 ---
 
-Для обеспечения безопасности приложений мы используем такие механизмы как аутентификация и авторизация. Думаю, многие из вас знакомы с этими концепциями и в этой статье мы сфокусируемся на понятие авторизации и связанных с ней моделях контроля доступом.
+Для обеспечения безопасности приложений мы используем такие механизмы как аутентификация и авторизация. Думаю, многие из вас знакомы с этими концепциями и в этой статье мы сфокусируемся на понятие авторизации и связанных с ней моделях контроля доступа.
 
 <p align="center">
 <img alt="security" width="500" src="/assets/img/posts/authz-in-rust/security.png"/>
@@ -221,7 +221,7 @@ async fn main() -> std::io::Result<()> {
 }
 
 async fn extract(_req: &ServiceRequest) -> Result<Vec<String>, Error> {
-    // Here is a place for your code to get user permissions/grants/permissions from a request
+    // Here is a place for your code to get user permissions/grants from a request
     // For example from a token or database
     
     // Stub example

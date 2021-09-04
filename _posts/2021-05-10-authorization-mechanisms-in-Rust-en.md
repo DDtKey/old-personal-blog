@@ -222,7 +222,7 @@ async fn main() -> std::io::Result<()> {
 }
 
 async fn extract(_req: &ServiceRequest) -> Result<Vec<String>, Error> {
-    // Here is a place for your code to get user permissions/grants/permissions from a request
+    // Here is a place for your code to get user permissions/grants from a request
     // For example from a token or database
     
     // Stub example

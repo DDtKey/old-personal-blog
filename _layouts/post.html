@@ -5,7 +5,9 @@ layout: default
 <div class="row" id="blog-post-container">
   <div class="col-lg-8 offset-md-2">
     {%- include blog_post_article.html -%}
-     {%- include blog_post_comments.html-%}
+    {%- if site.disqus_shortname -%}
+      {%- include blog_post_comments.html-%}
+    {%- endif -%}
   </div>
 </div>
 <div class="row">
