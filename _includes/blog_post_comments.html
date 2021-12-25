@@ -19,7 +19,7 @@
     </noscript>
 {%- endif -%}
 
-{%- if site.gisqus.enabled -%}
+{%- if site.gisqus.enabled == true -%}
     <script src="https://giscus.app/client.js"
             data-repo="{{site.gisqus.repo}}"
             data-repo-id="{{site.gisqus.repo_id}}"
