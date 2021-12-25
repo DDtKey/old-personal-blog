@@ -11,6 +11,12 @@ typewrite-text: Добро пожаловать на мою личную стр�
 
 # Experiences
 author_work_experiences:
+  - company_name: Workato
+    company_logo: workato.png
+    company_url: https://www.workato.com/
+    designation: Senior Rust Engineer
+    description:
+    visibility: true
   - company_name: Luxoft
     company_logo: luxoft.png
     company_url: https://www.luxoft.com/
