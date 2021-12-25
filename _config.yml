@@ -36,6 +36,12 @@ flickr_username:
 
 #disqus_shortname:
 #hyvor_talk_website_id:
+giscus:
+  enabled: true
+  repo: DDtKey/DDtKey.github.io
+  repo_id: MDEwOlJlcG9zaXRvcnkzNjU4NTk0NjY=
+  category: Announcements
+  category_id: DIC_kwDOFc6Sis4CAbCS
 
 # wakatime username (coding activity)
 wakatime_username: 

@@ -48,9 +48,14 @@
     {%- include hyvor_comments.html -%}
    </div>
   {%- endif -%}
-  <!-- Incomment incase you want to use Disqus-->
-  <div id="disqus_thread"></div>
 
+  {%- if site.disqus_shortname -%}
+  <div id="disqus_thread"></div>
+  {%- endif -%}
+
+  {%- if site.disqus.enabled -%}
+  <div class="giscus" id="giscus_thread"></div>
+  {%- endif -%}
 
 
 </article>

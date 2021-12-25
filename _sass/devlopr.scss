@@ -719,8 +719,9 @@ img {
 
 
 .company-logo {
-    width: 100px;
-    height: 100px;
+    max-width: 100px;
+    min-height: 75px;
+    max-height: 100px;
 }
 
 .author-profile-img {
