@@ -3,11 +3,11 @@ author_logo: profile.png
 author: Artem Medvedev
 author_username: DDtKey
 author_bio: >-
-  Hi, my name is Artem Medvedev. I'm a software developer (Rust, Java, Kotlin, Typescript). <br/>
+  Hi, my name is Artem Medvedev. I'm a software engineer (Rust, Java, Kotlin, Typescript). <br/>
   I'm a big fan of software development, it's more than just a job for me. <br/>
   I always strive for professional growth, gaining new knowledge and opportunities 🚀 <br/>
 author_email: "i@ddtkey.com"
-author_location: Russia
+author_location: Barcelona, Spain
 author_website_url: "https://ddtkey.com"
 typewrite-text: Welcome to my personal website!
 
@@ -17,7 +17,10 @@ author_work_experiences:
     company_logo: workato.png
     company_url: https://www.workato.com/
     designation: Senior Rust Engineer
-    description:
+    description: >-
+      Development of internal pilot projects with a focus on high availability and performance.
+
+      Technologies: <i>Rust, Tokio, AWS, Kafka, PostgreSQL, Go</i> and many others
     visibility: true
   - company_name: Luxoft
     company_logo: luxoft.png
