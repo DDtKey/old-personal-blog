@@ -18,7 +18,7 @@ author_work_experiences:
     company_url: https://www.workato.com/
     designation: Senior Rust Engineer
     description: >-
-      Development of internal pilot projects with a focus on high availability and performance.
+      Development of internal pilot projects with a focus on high availability and performance.<br/><br/>
 
       Technologies: <i>Rust, Tokio, AWS, Kafka, PostgreSQL, Go</i> and many others
     visibility: true
@@ -27,9 +27,9 @@ author_work_experiences:
     company_url: https://www.luxoft.com/
     designation: Lead Software Engineer
     description: >-
-      Work on the project of an OMS (order management system) for large Russian bank.
+      Work on the project of an OMS (order management system) for large Russian bank.<br/>
 
-      Responsibilities: Development, research of solutions and creation of proof of concepts, collaboration with colleagues.
+      Responsibilities: Development, research of solutions and creation of proof of concepts, collaboration with colleagues.<br/><br/>
       Technologies used: <i>Kotlin, Spring, Kafka, GraphQL, CDC (Debezium) PostgreSQL</i> and etc.
     visibility: true
   - company_name: Evotor

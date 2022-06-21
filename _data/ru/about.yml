@@ -16,7 +16,7 @@ author_work_experiences:
     company_url: https://www.workato.com/
     designation: Senior Rust Engineer
     description: >-
-      Разработка внутренних экспериментальных проектов с акцентом на высокую доступность и производительность.
+      Разработка внутренних экспериментальных проектов с акцентом на высокую доступность и производительность.<br/><br/>
 
       Технический стек: <i>Rust, Tokio, AWS, Kafka, PostgreSQL, Go</i> и др.
     visibility: true
@@ -26,7 +26,7 @@ author_work_experiences:
     designation: Lead Software Engineer
     description: >-
       Работа над OMS (системы управления заказами) проектом для крупного российского банка.
-      Исследование и разработка решений, создание доказательств концепций (PoF), сотрудничество с коллегами.
+      Исследование и разработка решений, создание доказательств концепций (PoF), сотрудничество с коллегами.<br/><br/>
 
       Технический стек:  <i>Kotlin, Spring, Kafka, GraphQL, CDC (Debezium) PostgreSQL</i> и др.
     visibility: true
